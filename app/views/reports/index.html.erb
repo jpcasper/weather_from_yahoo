@@ -1,0 +1,21 @@
+<h1>Weather Report</h1>
+
+<%= form_tag "/", method: :get do %>
+  <%= text_field_tag :city, nil, placeholder: "City" %>
+  <%= text_field_tag :state, nil, placeholder: "State" %>
+  <%= submit_tag "Push Button" %>
+<% end %>
+
+
+<h2> <%= @city %> , <%= @state %> </h2>
+<h3>Temp: <%= @temp %><%= @temp_unit %></h3>
+
+<%= image_tag @image %>
+
+<% @forecasts.each do |forecast| %>
+<h2><%= forecast["date"] %> - <%= forecast["day"] %> - <%= forecast["text"] %></h2>
+<h2>High: <%= forecast["high"] %></h2> 
+<h2>Low: <%= forecast["low"] %></h2>
+
+<br>
+<% end %>
